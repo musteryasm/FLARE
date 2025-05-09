@@ -6,32 +6,28 @@ from telegram.ext import Application, CommandHandler, CallbackQueryHandler, Cont
 from pathlib import Path
 
 PROJECT_ROOT = Path(__file__).parent.parent
-ENV = PROJECT_ROOT / '.env'
+ENV = PROJECT_ROOT / '.env.example'
 load_dotenv(ENV, override=True)
-
+print(f"Loaded TELEGRAM_TOKEN = {os.getenv('TELEGRAM_TOKEN')}")
 
 # Pre-escaped message templates
 WELCOME_MESSAGE = """
-*Welcome to Flare Guard 🐦‍🔥 \\- Your AI Fire Safety Partner\\!*
+*Welcome to Flare 🐦‍🔥 \\- Your AI Fire Safety Partner\\!*
 
-Hi {}\\! 👋 I'm here to protect your environment with real\\-time fire and smoke detection powered by YOLOv11 AI\\.
+Hi {}\\! 👋 I'm here to protect your environment with real\\-time fire and smoke detection AI\\.
 
 🌟 *Key Features*:
 ✅ 24/7 monitoring with instant alerts
 ✅ Location tagging \\& confidence scores
 ✅ Customizable detection zones
 
-🔗 *Quick Links*:
-◾ [👨💻 Developer's LinkedIn](https://www.linkedin.com/in/sayed-gamall)
-◾ [📂 GitHub Repository](https://github.com/sayedgamal99/Real-Time-Fire-Detection)
-
 🔒 *Privacy First*: No video/data is stored\\. Alerts are ephemeral\\.
 """
 HELP_MESSAGE = """
-*Flare Guard 🐦‍🔥 Help Center*
+*FLARE 🐦‍🔥 Help Center*
 
 *Need Assistance\\?*
-📧 Contact me directly at: sayyedgamall\\@gmail\\.com
+📧 Contact me directly at: shivammusterya\\@gmail\\.com
 """
 
 async def start_command(update: Update, context: ContextTypes.DEFAULT_TYPE) -> None:
@@ -45,10 +41,7 @@ async def start_command(update: Update, context: ContextTypes.DEFAULT_TYPE) -> N
         WELCOME_MESSAGE.format(safe_name),
         reply_markup=InlineKeyboardMarkup([
             [
-                InlineKeyboardButton(
-                    "👨💻 LinkedIn", url="https://www.linkedin.com/in/sayed-gamall"),
-                InlineKeyboardButton(
-                    "📂 GitHub", url="https://github.com/sayedgamal99/Real-Time-Fire-Detection"),
+
             ],
             [InlineKeyboardButton("❓ Need Help?", callback_data="send_help")]
         ]),

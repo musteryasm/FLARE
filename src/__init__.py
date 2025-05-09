@@ -4,8 +4,8 @@ A real-time fire detection and notification system using computer vision.
 """
 
 __version__ = '2.0.0'
-__author__ = 'Sayed Gamal'
-__email__ = 'sayyedgamall@gmail.com'
+__author__ = 'Shivam Musterya'
+__email__ = 'shivammusterya@gmail.com'
 
 from .config import Config, setup_logging
 from .fire_detector import Detector
